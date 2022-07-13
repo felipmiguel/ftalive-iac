@@ -26,26 +26,26 @@ resource "azurerm_container_registry" "container-registry" {
   }
 }
 
-resource "azurecaf_name" "azurecr_username" {
-  resource_type = "azurerm_key_vault_secret"
-  name          = "azurecr-username"
-  suffixes      = [var.application_name, var.environment]
-}
+# resource "azurecaf_name" "azurecr_username" {
+#   resource_type = "azurerm_key_vault_secret"
+#   name          = "azurecr-username"
+#   suffixes      = [var.application_name, var.environment]
+# }
 
 resource "azurerm_key_vault_secret" "azurecr_username" {
-  name         = azurecaf_name.azurecr_username.result
+  name         = "azurecr-username"
   value        = azurerm_container_registry.container-registry.admin_username
   key_vault_id = var.vault_id
 }
 
-resource "azurecaf_name" "azurecr_password" {
-  resource_type = "azurerm_key_vault_secret"
-  name          = "azurecr-password"
-  suffixes      = [var.application_name, var.environment]
-}
+# resource "azurecaf_name" "azurecr_password" {
+#   resource_type = "azurerm_key_vault_secret"
+#   name          = "azurecr-password"
+#   suffixes      = [var.application_name, var.environment]
+# }
 
 resource "azurerm_key_vault_secret" "azurecr_password" {
-  name         = azurecaf_name.azurecr_password.result
+  name         = "azurecr-password"
   value        = azurerm_container_registry.container-registry.admin_password
   key_vault_id = var.vault_id
 }
