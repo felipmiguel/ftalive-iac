@@ -29,6 +29,8 @@ resource "azurerm_key_vault" "application" {
     "environment"      = var.environment
     "application-name" = var.application_name
   }
+
+  purge_protection_enabled = false
 }
 
 resource "azurerm_key_vault_access_policy" "client" {
