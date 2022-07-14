@@ -49,7 +49,7 @@ resource "azurerm_linux_web_app" "application" {
 
   site_config {
     application_stack {
-      docker_image     = var.docker_image
+      docker_image     = "${var.azurecr_url}/${var.docker_image}"
       docker_image_tag = var.docker_image_tag
     }
     always_on  = true
