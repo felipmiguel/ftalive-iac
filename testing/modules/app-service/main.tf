@@ -62,6 +62,7 @@ resource "azurerm_linux_web_app" "application" {
 
   app_settings = {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+    "DOCKER_CUSTOM_IMAGE_NAME"            = "${var.azurecrl_url}/${var.docker_image}:${var.docker_image_tag}"
     "DOCKER_REGISTRY_SERVER_URL"          = var.azurecr_url
     "DOCKER_REGISTRY_SERVER_USERNAME"     = var.azurecr_username
     "DOCKER_REGISTRY_SERVER_PASSWORD"     = var.azurecr_password
